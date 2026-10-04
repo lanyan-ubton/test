@@ -1,0 +1,20 @@
+# 质量门禁专用 ruff 配置 (与项目自身配置互不干扰)
+# quality_gate.py 用 --config 显式指定本文件, 不会加载项目配置。
+
+[lint]
+select = [
+    "E",      # pycodestyle errors
+    "F",      # pyflakes (未使用 import/变量)
+    "W",      # pycodestyle warnings
+    "I",      # isort (import 排序)
+    "C901",   # McCabe 圈复杂度
+    "PLR0913", # 参数过多 (>4)
+    "PLR0915", # 语句过多 (>50)
+    "N",      # pep8-naming (命名规范)
+]
+
+[lint.mccabe]
+complexity = 6  # Bob 给 Agent 的宽松档 (人类标准 4)
+
+[lint.pylint]
+max-args = 4

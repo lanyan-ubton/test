@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!DOCTYPE module PUBLIC
+    "-//Checkstyle//DTD Checkstyle Configuration 1.3//EN"
+    "https://checkstyle.org/dtds/configuration_1_3.dtd">
+<!--
+  质量门禁专用 Checkstyle 配置 (与项目自身配置互不干扰)
+  quality_gate.py 用 -c 显式指定本文件。
+-->
+<module name="Checker">
+    <property name="severity" value="error"/>
+
+    <!-- 函数长度 <= 50 行 (跳过空行和注释) -->
+    <module name="LineLength">
+        <property name="max" value="120"/>
+        <property name="tabWidth" value="4"/>
+    </module>
+
+    <module name="TreeWalker">
+        <!-- 方法长度 <= 50 行 -->
+        <module name="MethodLength">
+            <property name="max" value="50"/>
+            <property name="countEmpty" value="false"/>
+        </module>
+
+        <!-- 参数个数 <= 4 -->
+        <module name="ParameterNumber">
+            <property name="max" value="4"/>
+            <property name="ignoreOverriddenMethods" value="true"/>
+        </module>
+
+        <!-- 圈复杂度 <= 6 (Bob 给 Agent 的宽松档) -->
+        <module name="CyclomaticComplexity">
+            <property name="max" value="6"/>
+        </module>
+
+        <!-- 嵌套深度 <= 4 -->
+        <module name="NestedIfDepth">
+            <property name="max" value="4"/>
+        </module>
+        <module name="NestedTryDepth">
+            <property name="max" value="3"/>
+        </module>
+
+        <!-- 命名规范 -->
+        <module name="MethodName"/>
+        <module name="ParameterName"/>
+        <module name="LocalVariableName"/>
+        <module name="MemberName"/>
+    </module>
+</module>
